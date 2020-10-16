@@ -22,8 +22,6 @@
         </ul>
     </nav>
     <article class="main">
-
-
         <div class="container">
             <div class="songList">
               <div class="line"></div>
@@ -32,34 +30,28 @@
               <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
               <button onclick="addNewSong()"id="addSongBtn">ADD SONG +</button>
             </div>
-          </div>
-
-
-
-          <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
-            <button onclick="addNewItemInContainer()"id="addSongBtn">ADD SONG +</button>
-          
-
-
-
-
-
+        </div>
+        <div id="camibar" class="container">
+            <div class="songList">
+              <div class="line"></div>
+            </div>
+            <div>
+              <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
+              <button onclick="addNewSong()"id="addSongBtn">ADD SONG +</button>
+            </div>
+        </div>
+        <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
+        <button onclick="addNewItemInContainer()"id="addSongBtn">ADD SONG +</button>
     </article>
     <aside class="sidebar">Add Song + </aside>
     <section class="songPlay">
-
-
         <div class="details">
             <div class="track-art"></div>
             <div class="track-name">Track Name</div>
             <div class="track-artist">Track Artist</div>
           </div>
-
-
     </section>
     <footer class="footer">
-
-
         <div class="slider_container">
             <div class="current-time">00:00</div>
             <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
@@ -71,8 +63,6 @@
             <div class="playpause-track" onclick="playpauseTrack()"><i class="fa fa-play-circle fa-5x"></i></div>
             <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
         </div>
-
-
     </footer>    
     
 <!-- end of player -->
