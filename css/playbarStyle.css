@@ -1,11 +1,9 @@
 /* FOOTER */
 
-.nowPlaying {
-  display: flex;
-}
+
 .nowPlayingImg {
   height: 60px;
-  margin-right: 1rem;
+  
 }
 .nowPlayingTxt {
   min-width: 9rem;
@@ -31,6 +29,8 @@ h4 {
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
   background-image: url(images/footer_background.png);
   height: 100px;
   position: fixed;
@@ -44,6 +44,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin: 1.4rem;
 }
 

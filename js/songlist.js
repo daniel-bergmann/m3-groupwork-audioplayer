@@ -8,10 +8,10 @@ function addNewSong( songSrc ) {
   // Define the emoji data
   let song = {
     cover:
-      "https://upload.wikimedia.org/wikipedia/en/a/a6/Schoolboy_Q_-_Crash_Talk.png",
+      "https://i.ibb.co/tM331H6/songlist-Pause.png",
     isPlaying: false,
-    artist: "Schoolboy",
-    title: "CrasH",
+    artist: "Daddy Yankee",
+    title: "terremoto",
     liked: false,
     songId: allSongs.length,
     audio: songSrc
@@ -148,8 +148,32 @@ function playSong(e) {
   allSongs[currentSongIndex].isPlaying = !allSongs[currentSongIndex].isPlaying;  
   }
   console.log(`is song playing? ${allSongs[currentSongIndex].isPlaying}`)
+
+// now playing
+// image source should equal the song.cover of the song that has the key value isPlaying true
+
+  const songCover = document.querySelector('#currentCover')
+  allSongs.forEach( song =>{
+    if (song.isPlaying){
+      songCover.src = song.cover;
+    }
+  });
+
+  const songArtist = document.querySelector('#artist')
+  allSongs.forEach( song =>{
+    if (song.isPlaying){
+      songArtist.innerHTML = song.artist;
+    }
+  });
+
+  const songTitle = document.querySelector('#title')
+  allSongs.forEach( song =>{
+    if (song.isPlaying){
+      songTitle.innerHTML = song.title;
+    }
+  });
   resetAllSongsDom();
-  }
+}
   
 
 // liked song function
@@ -210,3 +234,4 @@ allSongsBtn.addEventListener ('click', function(){
  addSongToDom(song);
   })
 });
+

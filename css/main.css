@@ -89,7 +89,7 @@ li:hover {
 .grid-container {
   display: -ms-grid;
   display: grid;
-  grid-template: "header   navbar" 90px "main   main" auto "sidebar  sidebar" 50px "songPlay songPlay" 0px "footer   footer" 100px/80% auto;
+  grid-template: "header   navbar" 90px "main   main" auto "sidebar  sidebar" 50px "songPlay songPlay" 100px "footer   footer" 100px/80% auto;
   /* ancho columna 1 de 200px y ancho columna 2 automatico*/
 }
 
