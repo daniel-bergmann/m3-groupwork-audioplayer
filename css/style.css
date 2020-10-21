@@ -1,9 +1,9 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -21,13 +21,13 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #fff9f9;
   grid-area: header;
-  background-color: #211E26;
+  background-color: #211e26;
 }
 
 .navbar {
   font-size: 20px;
   grid-area: navbar;
-  background-color: #211E26;
+  background-color: #211e26;
 }
 
 a {
@@ -45,15 +45,21 @@ a {
 li:hover {
   border: 1px solid;
   -webkit-box-shadow: -2px 0px 1px 1px;
-          box-shadow: -2px 0px 1px 1px;
+  box-shadow: -2px 0px 1px 1px;
   border-radius: 5em 0 0 5em;
-  background: -webkit-gradient(linear, left top, right top, from(#8359b0), to(#080111));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#8359b0),
+    to(#080111)
+  );
   background: linear-gradient(90deg, #8359b0 0%, #080111 100%);
 }
 
 .main {
   grid-area: main;
-  background-color: #D3CDCE;
+  background-color: #d3cdce;
 }
 
 .sidebar {
@@ -65,14 +71,14 @@ li:hover {
 .songPlay {
   font-family: 'Roboto', sans-serif;
   grid-area: songPlay;
-  background-color: #211E25;
+  background-color: #211e25;
   color: white;
 }
 
 .footer {
   font-family: 'Roboto', sans-serif;
   grid-area: footer;
-  background-color: #211E25;
+  background-color: #211e25;
   color: white;
 }
 
@@ -84,22 +90,22 @@ li:hover {
 .grid-container {
   display: -ms-grid;
   display: grid;
-  grid-template: "header   navbar" 90px "main   main" auto "sidebar  sidebar" 50px "songPlay songPlay" 250px "footer   footer" 200px/80% auto;
+  grid-template: 'header   navbar' 90px 'main   main' auto 'sidebar  sidebar' 50px 'songPlay songPlay' 250px 'footer   footer' 200px/80% auto;
   /* ancho columna 1 de 200px y ancho columna 2 automatico*/
 }
 
 @media (min-width: 600px) {
   .grid-container {
-    grid-template: "header   header" 100px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 180px/250px auto;
+    grid-template: 'header   header' 100px 'navbar   main' auto 'sidebar  sidebar' 50px 'songPlay  footer' 180px/250px auto;
   }
 }
 
 @media (min-width: 900px) {
   .grid-container {
     -ms-grid-rows: 100px auto 50px 100px;
-        grid-template-rows: 100px auto 50px 100px;
+    grid-template-rows: 100px auto 50px 100px;
     /*Fila 1 tendra 100px, fila dos tendra 50px, fila 3 tomara tamaño automatico y fila 4 100px*/
-    grid-template: "header   header" 100px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 100px/300px auto/350px auto;
+    grid-template: 'header   header' 100px 'navbar   main' auto 'sidebar  sidebar' 50px 'songPlay  footer' 100px/300px auto/350px auto;
   }
 }
 
@@ -116,13 +122,25 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(40, 37, 45, 0.16)), to(rgba(255, 255, 255, 0))), rgba(0, 0, 0, 0.28);
-  background: linear-gradient(180deg, rgba(40, 37, 45, 0.16) 0%, rgba(255, 255, 255, 0) 100%), rgba(0, 0, 0, 0.28);
+  -ms-flex-align: center;
+  align-items: center;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(40, 37, 45, 0.16)),
+      to(rgba(255, 255, 255, 0))
+    ),
+    rgba(0, 0, 0, 0.28);
+  background: linear-gradient(
+      180deg,
+      rgba(40, 37, 45, 0.16) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgba(0, 0, 0, 0.28);
   position: relative;
   left: 0%;
   width: 100%;
@@ -135,7 +153,7 @@ body {
 
 .newSongPlayBtn:hover {
   -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .newSongInfo {
@@ -189,186 +207,5 @@ button {
 .line {
   background-color: black;
   height: 1px;
-}
-
-/* Using flex with the column direction to 
-     align items in a vertical direction */
-.player {
-  height: 95vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 25px;
-}
-
-.track-art {
-  margin: 5px;
-  height: 120px;
-  width: 120px;
-  background-size: cover;
-  background-position: center;
-}
-
-/* Changing the font sizes to suitable ones */
-.track-name {
-  font-size: 16px;
-}
-
-.track-artist {
-  font-size: 20px;
-}
-
-/* Using flex with the row direction to 
-         align items in a horizontal direction */
-.buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #8459B2;
-}
-
-.playpause-track,
-.prev-track,
-.next-track {
-  padding: 25px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 13px;
-  width: 100%;
-  /* Smoothly transition the opacity */
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
-}
-
-/* Change the opacity when mouse is hovered */
-.playpause-track:hover,
-.prev-track:hover,
-.next-track:hover {
-  opacity: 1.0;
-}
-
-/* Define the slider width so that it scales properly */
-.slider_container {
-  width: 90%;
-  max-width: 400px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-/* Modify the appearance of the slider */
-.seek_slider, .volume_slider {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  height: 5px;
-  background: #DEDEDE;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
-}
-
-/* Modify the appearance of the slider thumb */
-.seek_slider::-webkit-slider-thumb,
-.volume_slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  background: #8459B2;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-/* Change the opacity when mouse is hovered */
-.seek_slider:hover,
-.volume_slider:hover {
-  opacity: 1.0;
-}
-
-.seek_slider {
-  width: 60%;
-}
-
-.volume_slider {
-  width: 30%;
-}
-
-.current-time,
-.total-duration {
-  padding: 10px;
-}
-
-i.fa-volume-down,
-i.fa-volume-up {
-  padding: 10px;
-}
-
-/* Change the mouse cursor to a pointer 
-         when hovered over */
-i.fa-play-circle,
-i.fa-pause-circle,
-i.fa-step-forward,
-i.fa-step-backward {
-  cursor: pointer;
-}
-
-@media (min-width: 600px) {
-  .track-art {
-    height: 70px;
-    width: 70px;
-  }
-  /* Changing the font sizes to suitable ones */
-  .track-name {
-    font-size: 10px;
-  }
-  .track-artist {
-    font-size: 14px;
-  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,26 +1,35 @@
+//SONG LIST
+
 const songList = document.querySelector(".songList");
 
-const allSongs = [];
+let allSongs = [];
 
-function addNewSong() {
+function addNewSong( songSrc ) {
   // Define the emoji data
   let song = {
     cover:
       "https://upload.wikimedia.org/wikipedia/en/a/a6/Schoolboy_Q_-_Crash_Talk.png",
     isPlaying: false,
-    artist: "Schoolboy Q",
+    artist: "Schoolboy",
     title: "CrasH",
     liked: false,
-    songId: allSongs.length + 1,
-    audio: ""
+    songId: allSongs.length,
+    audio: songSrc
   };
   // Add it to the allSongs array
   allSongs.push(song);
+  console.log("Song added to array")
+  resetAllSongsDom();
+}
+
+let addSongToDom = function( song ) {
 
   // Add it to the DOM
   let newSong = document.createElement("div");
   newSong.classList.add("newSong");
   songList.appendChild(newSong);
+
+  newSong.setAttribute('data-index', song.songId);
 
   //song cover
   let newSongCover = document.createElement("img");
@@ -33,6 +42,10 @@ function addNewSong() {
   newSongPlayBtn.src = "https://i.ibb.co/j59Mq8R/songlist-Play.png";
   newSongPlayBtn.classList.add("newSongPlayBtn");
   newSong.appendChild(newSongPlayBtn);
+  newSongPlayBtn.addEventListener('click', playSong)
+  if (song.isPlaying) {
+    newSongPlayBtn.src = "https://i.ibb.co/tM331H6/songlist-Pause.png"
+  }
 
   //song artist and title div
   let newSongInfo = document.createElement("div");
@@ -43,6 +56,7 @@ function addNewSong() {
   let newSongArtist = document.createElement("h3");
   newSongArtist.innerHTML = song.artist;
   newSongInfo.appendChild(newSongArtist);
+
 
   //title
   let newSongTitle = document.createElement("h4");
@@ -56,45 +70,111 @@ function addNewSong() {
 
   let newSongHeart = document.createElement("img");
   newSongHeart.classList.add("heart");
-  newSongHeart.src = "https://i.ibb.co/N1ZtcqP/heart-Empty.png";
+  newSongHeart.src = song.liked ? "https://i.ibb.co/sWv1GY8/heart-Full.png" : "https://i.ibb.co/N1ZtcqP/heart-Empty.png";
   newSongIcons.appendChild(newSongHeart);
+  newSongHeart.addEventListener('click', likeSong)
+
+
+
   ///TRASH BUTTON
   let newSongTrash = document.createElement("img");
   newSongTrash.classList.add("trash");
   newSongTrash.src = "https://i.ibb.co/sJTxwk6/trash.png";
   newSongIcons.appendChild(newSongTrash);
+  newSongTrash.addEventListener('click', removeSong)
   
-  // REMOVE ITEM ON CLICK
-  newSongTrash.addEventListener("mouseup", (e)=>  {e.target.parentNode.parentNode.remove()})
+  //audio div
+  let newSongAudio = document.createElement("audio");
+  newSongAudio.classList.add("newAudio");
+  newSongAudio.src = song.audio;
+  newSong.appendChild(newSongAudio);
+  if (song.isPlaying) {
+    newSongAudio.play();
+  }
 
-  let newSongLine = document.createElement("div");
-  newSongLine.classList.add("line");
-  newSong.appendChild(newSongLine);
+  console.log("Song added or changed in DOM")
 }
 
-addNewSong();
-addNewSong();
+//a function that removes all html from songlist and then puts it back in with newer data
+function resetAllSongsDom(){
+document.querySelector('.songList').innerHTML = '';
+
+allSongs.forEach(song => {
+  addSongToDom(song);
+
+  console.log("DOM Reset.")
+  })
+}
 
 
+// UPLOAD BUTTONS
+const realUploadBtn = document.querySelector("#real-upload");
+const addSongBtn = document.querySelector("#addSongBtn");
 
-// LIKED SONGS
-//filter songs from allSongs that have liked = true; //NOT WORKING??
-const likedSongs = allSongs.filter((song) => song.liked === true);
-
-//declare heart button and give it an event listener for click
-let heartBtn = document.querySelector(".heart");
-heartBtn.addEventListener("click", function () {
-  //give it a new red heart image
-  heartBtn.src = "https://i.ibb.co/64QT3X6/heart-Full.png";
-
-  //select song by ID (still constant 1, needs to be a variable)
-  let selectedSong = allSongs.find((song) => song.songId === 1);
-  //set selectedSong
-  selectedSong.liked = true;
+//click the input button on click
+addSongBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  realUploadBtn.click();
+});
+//when input changes (gets a file), sets the files source as songSrc and runs addNewSong with the songSrc as an argument
+realUploadBtn.addEventListener("change", function (e) {
+  e.preventDefault();
+  const fileInput = e.target;
+  let songSrc = fileInput.value;
+  console.log(songSrc)
+// the song source has a stupid file path so we 
+  songSrc = songSrc.toString();
+  songSrc = songSrc.substring(11);
+  
+  console.log ("Song uploaded.")
+  addNewSong( songSrc );
+  
 });
 
 
-//ADD NEW SONG BUTTON
-var loadFile = function(event) {
-    currentSong.src = URL.createObjectURL(event.target.files[0]);
-  };
+// PLAY BUTTON
+function playSong(e) {
+  var currentSong = e.target.parentNode.parentNode.querySelector('audio');
+  const currentSongIndex = e.target.parentNode.getAttribute('data-index');
+  // loop through all songs and set all song.isPlaying = false
+  allSongs.forEach(song =>{
+    song.isPlaying = false;
+  })
+
+  //set current song.isPlaying = whatever it's not 
+  allSongs[currentSongIndex].isPlaying = !allSongs[currentSongIndex].isPlaying;
+  
+  
+  // if (allSongs[currentSongIndex].isPlaying) {
+  //   currentSong.pause()
+  // } else { 
+  //   allSongs[currentSongIndex].isPlaying = true;
+  //   currentSong.play()
+  // }
+  console.log(allSongs[currentSongIndex].isPlaying)
+  resetAllSongsDom();
+
+   }
+  
+
+// liked song function
+let likedSongs = [];
+function likeSong(e) {
+  //target the dom element of the selected objects id
+  const songId = e.target.parentNode.parentNode.getAttribute('data-index');
+  //set the selected objects liked value to whatevers its not
+  allSongs[songId].liked = !allSongs[songId].liked;
+  //filers all liked songs into an array called likedSongs
+  likedSongs = allSongs.filter((song) => song.liked == true);
+  resetAllSongsDom();
+}
+  
+//remove song function
+function removeSong(e) {
+  //get this songs id
+  const songId = e.target.parentNode.parentNode.getAttribute('data-index');
+  //remove the object with the same id
+  allSongs.splice(songId)
+  //refresh dom
+  resetAllSongsDom();
+}
