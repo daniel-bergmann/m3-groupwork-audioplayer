@@ -24,56 +24,35 @@
     <article class="main">
       <!-- songlist container -->
       <div class="container">
-      
-        <div class="songList">
-          <div class="line"></div>
-        </div>
-        <!-- add song button -->
-        <input
-          type="file"
-          accept=".mp3, .wav, audio/*"
-          id="real-upload"
-          hidden="hidden"/>
-        <button id="addSongBtn">ADD SONG +</button>
+        <div class="songList"></div>
+        
       </div>
           <!--end of songlist -->
 
-        </div>
 
 
         <!--Start of Sidebar -->
-
-
-
         <!-- this part below here becomes active when the navbar.js is connetced properly as a SPA -->
         <div id="likesongs" class="container">
-            <div class="songList">
-              <div class="line"></div>liked
-            </div>
-            <div>
-              <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
-              <button onclick="addNewSong()"id="addSongBtn">ADD SONG +</button>
-            </div>
+            <div class="songList"></div>
         </div>
-        <div id="playlist" class="container">
-            <div class="songList">
-              <div class="line"></div>plays
-            </div>
-            <div>
-              <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
-              <button onclick="addNewSong()"id="addSongBtn">ADD SONG +</button>
-            </div>
-        </div>
-
-        <input type="file" accept=".mp3, .wav, audio/*" id="real-upload" onchange="loadFile(event)" hidden="hidden"/>
-        <button onclick="addNewItemInContainer()"id="addSongBtn">ADD SONG +</button>
     </article>
     <!-- this part above here becomes active when the navbar.js is connetced properly as a SPA -->
 
 
 
 
-    <aside class="sidebar">Add Song +</aside>
+    <aside class="sidebar">
+
+      <input
+          type="file"
+          accept=".mp3, .wav, audio/*"
+          id="real-upload"
+          hidden="hidden"/>
+        <button id="addSongBtn">ADD SONG +</button>
+
+
+    </aside>
     <section class="songPlay">
         
     </section>

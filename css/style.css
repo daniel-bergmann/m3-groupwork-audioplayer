@@ -83,7 +83,6 @@ li:hover {
 }
 
 .grid-container > * {
-  padding: 10px;
   text-align: center;
 }
 
@@ -107,6 +106,13 @@ li:hover {
     /*Fila 1 tendra 100px, fila dos tendra 50px, fila 3 tomara tamaño automatico y fila 4 100px*/
     grid-template: 'header   header' 100px 'navbar   main' auto 'sidebar  sidebar' 50px 'songPlay  footer' 100px/300px auto/350px auto;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
