@@ -5,7 +5,8 @@
         "style.scss",
         "_grid-template.scss",
         "_song-list.scss",
-        "_player.scss"
+        "_player.scss",
+        "_navbar.scss"
     ],
     "names": [],
     "file": "style.css"
