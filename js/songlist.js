@@ -137,24 +137,19 @@ function playSong(e) {
   var currentSong = e.target.parentNode.parentNode.querySelector('audio');
   const currentSongIndex = e.target.parentNode.getAttribute('data-index');
   // loop through all songs and set all song.isPlaying = false
+  
+  if (allSongs[currentSongIndex].isPlaying !== true){ 
   allSongs.forEach(song =>{
-    song.isPlaying = false;
+  song.isPlaying = false;
   })
-
   //set current song.isPlaying = whatever it's not 
   allSongs[currentSongIndex].isPlaying = !allSongs[currentSongIndex].isPlaying;
-  
-  
-  // if (allSongs[currentSongIndex].isPlaying) {
-  //   currentSong.pause()
-  // } else { 
-  //   allSongs[currentSongIndex].isPlaying = true;
-  //   currentSong.play()
-  // }
-  console.log(allSongs[currentSongIndex].isPlaying)
+  } else {
+  allSongs[currentSongIndex].isPlaying = !allSongs[currentSongIndex].isPlaying;  
+  }
+  console.log(`is song playing? ${allSongs[currentSongIndex].isPlaying}`)
   resetAllSongsDom();
-
-   }
+  }
   
 
 // liked song function
@@ -166,6 +161,8 @@ function likeSong(e) {
   allSongs[songId].liked = !allSongs[songId].liked;
   //filers all liked songs into an array called likedSongs
   likedSongs = allSongs.filter((song) => song.liked == true);
+
+  console.log("Song added to likedSongs.")
   resetAllSongsDom();
 }
   
@@ -174,7 +171,13 @@ function removeSong(e) {
   //get this songs id
   const songId = e.target.parentNode.parentNode.getAttribute('data-index');
   //remove the object with the same id
-  allSongs.splice(songId)
+  var remove = confirm(`Are you sure you want to delete ${allSongs[songId].title}?`);
+  if (remove) {
+    allSongs.splice(songId)
+  }
+  //
+  //allSongs.splice(songId)
   //refresh dom
+  console.log("Song removed.")
   resetAllSongsDom();
 }
