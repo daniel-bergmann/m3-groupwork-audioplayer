@@ -235,3 +235,32 @@ allSongsBtn.addEventListener ('click', function(){
   })
 });
 
+const playBtn = document.querySelector('.play');
+playBtn.addEventListener('click', function() {
+  allSongs.forEach(song => {
+    if(song.isPlaying) {
+      song.isPlaying = false;
+    } 
+   
+    console.log(song.isPlaying)
+    // everytime we make any change we have to place a resetAllSongDom() at the bottom of the function.
+    resetAllSongsDom();
+  });  
+});
+
+
+// check index of which song has the isPlaying = true. 
+// then set the isPlaying = true on the allSongs[i + 1] and set isPlaying to false on all other songs;
+// 
+const forwardBtn = document.querySelector('.forward')
+forwardBtn.addEventListener('click', function(){
+  allSongs.forEach(song =>{
+    if (song.isPlaying) {
+      song.isPlaying = false;
+      let currentSongIndex = song.songId;
+      let nextSongId = currentSongIndex + 1;
+      allSongs[nextSongId].isPlaying = true;
+    }
+    resetAllSongsDom();
+  });
+});
