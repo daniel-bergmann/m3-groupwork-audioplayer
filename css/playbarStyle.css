@@ -1,0 +1,111 @@
+/* FOOTER */
+
+.nowPlaying {
+  display: flex;
+}
+.nowPlayingImg {
+  height: 60px;
+  margin-right: 1rem;
+}
+.nowPlayingTxt {
+  min-width: 9rem;
+}
+
+h3 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fff9f9;
+  opacity: 0.9;
+}
+h4 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fff9f9;
+  opacity: 0.8;
+}
+
+.footer {
+  background-image: url(images/footer_background.png);
+  height: 100px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.4rem;
+}
+
+.footer_content > div {
+  margin-left: 4rem;
+}
+
+/* PLAY BAR */
+.playBar {
+  min-width: 15rem;
+}
+
+#playbarBtns {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  margin-left: 0.5rem;
+}
+
+#playbarBtns:hover {
+  transform: scale(1.1);
+}
+
+/* PROGRESS BAR */
+.progressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.progressBarEmpty {
+  background-color: white;
+  width: 100%;
+  height: 15px;
+  display: block;
+}
+
+.progressBarPlaying {
+  background: #8459b2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 15px;
+  display: block;
+}
+
+.progressBar > p {
+  margin: 1rem;
+  font-size: 100%;
+}
+
+.my-button {
+  color: white;
+  background-color: tomato;
+}
+.container2 div {
+  background: pink;
+  padding: 1rem;
+  margin: 1rem;
+}
