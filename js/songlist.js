@@ -181,3 +181,32 @@ function removeSong(e) {
   console.log("Song removed.")
   resetAllSongsDom();
 }
+
+// menu
+
+const allSongsBtn = document.querySelector('#allSongsBtn');
+const likedSongsBtn = document.querySelector('#likedSongsBtn');
+
+likedSongsBtn.addEventListener('click', function() {
+  document.querySelector('.songList').innerHTML = '';
+
+//create HTML elements in the songList div from all song objects in allSongs array that have the key liked value = true
+
+//if song objects key liked value is true, run addNewSong function+
+  allSongs.forEach(song => {
+    if (song.liked) {
+      addSongToDom(song);
+    }
+  })
+
+});
+
+//clear all songList Div elements, then create DOM elements for all allSongs objects in the songList div
+
+allSongsBtn.addEventListener ('click', function(){
+  document.querySelector('.songList').innerHTML = '';
+  allSongs.forEach(song => {
+
+ addSongToDom(song);
+  })
+});

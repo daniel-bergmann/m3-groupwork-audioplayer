@@ -89,13 +89,13 @@ li:hover {
 .grid-container {
   display: -ms-grid;
   display: grid;
-  grid-template: "header   navbar" 90px "main   main" auto "sidebar  sidebar" 50px "songPlay songPlay" 250px "footer   footer" 200px/80% auto;
+  grid-template: "header   navbar" 90px "main   main" auto "sidebar  sidebar" 50px "songPlay songPlay" 0px "footer   footer" 100px/80% auto;
   /* ancho columna 1 de 200px y ancho columna 2 automatico*/
 }
 
 @media (min-width: 600px) {
   .grid-container {
-    grid-template: "header   header" 100px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 180px/250px auto;
+    grid-template: "header   header" 100px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 100px/200px auto;
   }
 }
 
@@ -214,18 +214,24 @@ button {
   background-color: black;
   height: 1px;
 }
-/*# sourceMappingURL=style.css.map */
 
-.tablink {
+
+.menuBtns {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-btn {
   color: #fff9f9;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 23px;
+  margin-top: 1px;
 }
 
-.tablink:hover {
+.menu-btn:hover {
   transform: scale(1.1);
 }
 
