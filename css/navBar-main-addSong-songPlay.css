@@ -1,0 +1,151 @@
+/*style menuBar*/
+
+
+  
+  .menu-btn {
+    font-family: "Roboto", sans-serif;
+    color: #fff9f9;
+    text-decoration: none;
+  }
+  
+  .menu-btn:hover {
+    margin-left: 15%;
+    margin-right: 5%;
+    border-radius: 10em 0 0 10em;
+    background:
+     -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#8359b0),
+      to(#080111)
+    );
+  }
+  
+  
+
+.container {
+    text-align: center;
+   }
+   
+   .newSong {
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex;
+     -webkit-box-pack: justify;
+     -ms-flex-pack: justify;
+     justify-content: space-between;
+     -webkit-box-align: center;
+     -ms-flex-align: center;
+     align-items: center;
+     /*background: -webkit-gradient(
+         linear,
+         left top,
+         left bottom,
+         from(rgba(40, 37, 45, 0.16)),
+         to(rgba(255, 255, 255, 0))
+       ),
+       rgba(0, 0, 0, 0.28);*/
+     background: linear-gradient(
+         180deg,
+         rgba(40, 37, 45, 0.16) 0%,
+         rgba(255, 255, 255, 0) 100%
+       ),
+       rgba(0, 0, 0, 0.28);
+     position: relative;
+     left: 0%;
+     width: 100%;
+   }
+   
+   .newSongCover {
+     width: 50px;
+     margin-left: 2rem;
+   }
+   
+   .newSongPlayBtn:hover {
+     -webkit-transform: scale(1.1);
+     transform: scale(1.1);
+   }
+   
+   .newSongInfo {
+     margin-right: 35rem;
+   }
+   
+   h3 {
+     font-family: Roboto;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 15px;
+     line-height: 21px;
+     color: #be2929;
+     opacity: 0.9;
+   }
+   
+   h4 {
+     font-family: Roboto;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 15px;
+     line-height: 21px;
+     color: #fff9f9;
+     opacity: 0.8;
+   }
+   
+   .icons {
+     margin-right: 3rem;
+   }
+   
+   button {
+     background: none;
+     color: inherit;
+     border: none;
+     padding: 0;
+     font: inherit;
+     cursor: pointer;
+     outline: inherit;
+   }
+   
+   #addSongBtn {
+     font-family: Roboto;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 19.8064px;
+     line-height: 23px;
+     color: rgba(255, 249, 249, 0.5);
+     margin-top: 1rem;
+   }
+   
+   /*.line {
+     background-color: black;
+     height: 1px;
+   }*/
+   
+   .menuBtns {
+       display: flex;
+       flex-direction: column;
+   }
+   
+   .menu-btn {
+     color: #fff9f9;
+     font-family: Roboto;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 18px;
+     line-height: 23px;
+     margin-top: 1px;
+   }
+   
+   .menu-btn:hover {
+     transform: scale(1.1);
+   }
+
+@media (min-width: 600px) {
+  
+}
+
+
+@media (min-width: 900px){
+  
+  
+}
+    

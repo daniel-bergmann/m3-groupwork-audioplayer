@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/grid-container.css" />
     <link rel="stylesheet" href="css/playbarStyle.css" />
+    <link rel="stylesheet" href="css/navBar-main-addSong-songPlay.css"/>
     <title>Document</title>
   </head>
   <body class="grid-container">
     <header class="header">
       <h1>Earthquake</h1>
     </header>
+     <!-- start of menu -->
     <nav class="navbar">
-      <!-- start of menu -->
       <svg
         onclick="menu()"
         width="1em"
@@ -84,6 +85,13 @@
      </div>
       <div class="footer">
         <div class="footer_content">
+          
+          <div class="progressBar">
+            <p>1:34</p>
+            <span id="progress" class="progressBarPlaying"></span>
+            <span class="progressBarEmpty"></span>
+            <p>3:00</p>
+          </div>
           <div class="playBar">
             <button class="back" id="playbarBtns">
               <img src="img/backwards.png" alt="" />
@@ -97,45 +105,8 @@
             </button>
             <audio id="song" src=""></audio>
           </div>
-          <div class="progressBar">
-            <p>1:34</p>
-            <span id="progress" class="progressBarPlaying"></span>
-            <span class="progressBarEmpty"></span>
-            <p>3:00</p>
-          </div>
         </div>
       </div>
-    
-       <!--   
-
-
-          <div class="playBar">
-            <button class="back" id="playbarBtns">
-              <img src="img/backwards.png" alt="" />
-            </button>
-
-            <button class="play" id="playbarBtns">
-              <img id="playBtnImg" src="img/play.png" alt="" />
-            </button>
-            <button class="forward" id="playbarBtns">
-              <img src="img/forward.png" alt="" />
-            </button>
-            <audio id="song" src=""></audio>
-          </div>
-          <div class="progressBar">
-            <p>1:34</p>
-            <span id="progress" class="progressBarPlaying"></span>
-            <span class="progressBarEmpty"></span>
-            <p>3:00</p>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- <footer class="footer"></footer> -->
-
-    <!-- end of player -->
-    <!-- <script src="js/navbar.js"></script> -->
     <script src="js/songlist.js"></script>
   </body>
 </html>
