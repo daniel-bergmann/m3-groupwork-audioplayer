@@ -3,16 +3,15 @@
 const songList = document.querySelector(".songList");
 
 let allSongs = [];
-let songAudios = [];
 
+//
 function addNewSong(songSrc) {
-  //audio div
+  //1. audio element created.
   let newSongAudio = document.createElement("audio");
   newSongAudio.classList.add("newAudio");
   newSongAudio.src = songSrc;
-  songAudios.push(newSongAudio);
 
-  // Define the song data
+  //2. Define the song as an object with the following keys and starting values
   let song = {
     cover: "https://i.ytimg.com/vi/oYadGMVZm0E/hqdefault.jpg",
     artist: "Daddy Yankee",
@@ -23,33 +22,33 @@ function addNewSong(songSrc) {
     isPlaying: false,
     currentSong: false,
   };
-  // Add it to the allSongs array
+  //3. Add it to the allSongs array
   allSongs.push(song);
   console.log("Song added to array");
   resetAllSongsDom();
 }
 
+//
 let addSongToDom = function (song) {
-  // Add it to the DOM
+  // 1. Create a DOM Div for the new song
   let newSong = document.createElement("div");
   newSong.classList.add("newSong");
   songList.appendChild(newSong);
-
   newSong.setAttribute("data-index", song.songId);
 
-  //song cover
+  //2. Song cover added to the div
   let newSongCover = document.createElement("img");
   newSongCover.classList.add("newSongCover");
   newSongCover.src = song.cover;
   newSong.appendChild(newSongCover);
 
-  //play button
+  //3. Play button added to the div
   let newSongPlayBtn = document.createElement("img");
   newSongPlayBtn.src = "https://i.ibb.co/j59Mq8R/songlist-Play.png";
   newSongPlayBtn.classList.add("newSongPlayBtn");
   newSong.appendChild(newSongPlayBtn);
   newSongPlayBtn.addEventListener("click", playSong);
-  //if song is playing ,set its
+  //3.1 Check if song is playing, and show play or pause accordingly
   if (song.isPlaying) {
     newSongPlayBtn.src = "https://i.ibb.co/tM331H6/songlist-Pause.png";
     playBtnImg.src = "img/pause.png";
@@ -57,47 +56,51 @@ let addSongToDom = function (song) {
     playBtnImg.src = "img/play.png";
   }
 
-  //song artist and title div
+  //4. Song info div element created and added to the div
   let newSongInfo = document.createElement("div");
   newSongInfo.classList.add("newSongInfo");
   newSong.appendChild(newSongInfo);
 
-  //artist
+  //4.1 Artist name element created in song info div
   let newSongArtist = document.createElement("h3");
   newSongArtist.innerHTML = song.artist;
   newSongInfo.appendChild(newSongArtist);
 
-  //title
+  //4.2 Song title element created in song info div
   let newSongTitle = document.createElement("h4");
   newSongTitle.innerHTML = song.title;
   newSongInfo.appendChild(newSongTitle);
 
-  //icons div
+  //5. Icons div created and added to new song div
   let newSongIcons = document.createElement("div");
   newSongIcons.classList.add("icons");
   newSong.appendChild(newSongIcons);
 
+  //5.1.1 Heart icon created and added to new song div
   let newSongHeart = document.createElement("img");
   newSongHeart.classList.add("heart");
+  //5.1.2 Show red heart if liked = true, else show empty heart
   newSongHeart.src = song.liked
     ? "https://i.ibb.co/sWv1GY8/heart-Full.png"
     : "https://i.ibb.co/5xt3Wnh/heart.png";
   newSongIcons.appendChild(newSongHeart);
+  //5.1.3 Run likeSong function on click
   newSongHeart.addEventListener("click", likeSong);
 
-  ///TRASH BUTTON
+  //5.2.1 Trash button created and added to new song div
   let newSongTrash = document.createElement("img");
   newSongTrash.classList.add("trash");
   newSongTrash.src = "https://i.ibb.co/48cHjGg/Delete.png";
   newSongIcons.appendChild(newSongTrash);
+  //5.2.2 Run removeSong function on click
   newSongTrash.addEventListener("click", removeSong);
 
-  //append the audio element to the newsong div
+  //6. Append the audio element from addNewSong function to the newSong div
   newSong.appendChild(song.audio);
   if (song.isPlaying) {
     song.audio.play();
   }
-  // //line div
+  //7. Create a line div below all new songs to match style.
   let newSongLine = document.createElement("div");
   newSongLine.classList.add("line");
   newSong.parentNode.appendChild(newSongLine);
@@ -105,13 +108,13 @@ let addSongToDom = function (song) {
   console.log("Song added or changed in DOM");
 };
 
-//a function that removes all html from songlist and then puts it back in with newer data
+// RESET ALL DOM - a function that removes all html from songlist and then puts it back in with newer data
 function resetAllSongsDom() {
+  //1. Clear the song list DOM element
   document.querySelector(".songList").innerHTML = "";
-
+  //2. Add a song to the DOM for each song in the allSongs array
   allSongs.forEach((song) => {
     addSongToDom(song);
-
     console.log("DOM Reset.");
   });
 }
@@ -120,12 +123,12 @@ function resetAllSongsDom() {
 const realUploadBtn = document.querySelector("#real-upload");
 const addSongBtn = document.querySelector("#addSongBtn");
 
-//click the input button on click
+//1. click the input button on click
 addSongBtn.addEventListener("click", function (e) {
   e.preventDefault();
   realUploadBtn.click();
 });
-//when input changes (gets a file), sets the files source as songSrc and runs addNewSong with the songSrc as an argument
+//2. when input changes (gets a file), set the files source as songSrc
 realUploadBtn.addEventListener("change", function (e) {
   e.preventDefault();
   const fileInput = e.target;
@@ -136,6 +139,7 @@ realUploadBtn.addEventListener("change", function (e) {
   songSrc = songSrc.substring(11);
 
   console.log("Song uploaded.");
+  //3. Run the addNewSong with the songSrc (filepath of uploaded song) argument
   addNewSong(songSrc);
 });
 
@@ -147,14 +151,13 @@ function playSong(e) {
     return song.isPlaying;
   });
 
-  //set all songs to not the current song, then set clickedSong to current song.
+  //1. set all songs to not the current song, then set clickedSong to current song.
   allSongs.forEach((song) => {
     song.currentSong = false;
   });
   clickedSong.currentSong = true;
 
-  //this conditional will handle only the song that is playing, but is not current song
-  /////it pauses the currently playing song and sets it to not playing and not current song
+  //2. find song that is playing but is not current song, pause it, and set it to not the current song nor the one that isPlaying
   if (currentlyPlayingSong && clickedSong !== currentlyPlayingSong) {
     currentlyPlayingSong.audio.pause();
     // MISSING: set songs duration to 00:00
@@ -162,7 +165,7 @@ function playSong(e) {
     currentlyPlayingSong.currentSong = false;
   }
 
-  // loop through all songs and set all song.isPlaying = false
+  //3. check if the clicked song is playing, if it is then  set isplaying to false and pause, otherwise set it to true and play.
   if (clickedSong.isPlaying) {
     clickedSong.isPlaying = false;
     clickedSong.audio.pause();
@@ -170,9 +173,7 @@ function playSong(e) {
     clickedSong.isPlaying = true;
     clickedSong.audio.play();
   }
-
-  console.log(currentlyPlayingSong);
-
+  //4. give the nowPlaying footer section the cover, artist name and song title of the clicked song
   const songCover = document.querySelector("#currentCover");
   songCover.src = clickedSong.cover;
 
@@ -181,6 +182,7 @@ function playSong(e) {
 
   const songTitle = document.querySelector("#title");
   songTitle.innerHTML = clickedSong.title;
+  //5. reset the dom to match the true state of the array
   resetAllSongsDom();
 }
 
@@ -188,32 +190,30 @@ function playSong(e) {
 // liked song function
 let likedSongs = [];
 function likeSong(e) {
-  //target the dom element of the selected objects id
+  //1. target the dom element of the selected objects id
   const songId = e.target.parentNode.parentNode.getAttribute("data-index");
-  //set the selected objects liked value to whatevers its not
+  //2. set the selected objects liked value to whatevers its not
   allSongs[songId].liked = !allSongs[songId].liked;
-  //filers all liked songs into an array called likedSongs
+  //3. filter all liked songs into an array called likedSongs
   likedSongs = allSongs.filter((song) => song.liked == true);
-
   console.log("Song added to likedSongs.");
+  //4. //5. reset the dom to match the true state of the array
   resetAllSongsDom();
 }
 
 //remove song function
 function removeSong(e) {
-  //get this songs id
+  //1. get this songs id
   const songId = e.target.parentNode.parentNode.getAttribute("data-index");
-  //remove the object with the same id
+  //2. alert a confirmation window, remove the song object from the array if confirmed.
   var remove = confirm(
     `Are you sure you want to delete ${allSongs[songId].title}?`
   );
   if (remove) {
     allSongs.splice(songId);
   }
-  //
-  //allSongs.splice(songId)
-  //refresh dom
   console.log("Song removed.");
+  //3. reset the dom to match the true state of the array
   resetAllSongsDom();
 }
 
@@ -268,12 +268,12 @@ forwardBtn.addEventListener("click", function () {
 const allSongsBtn = document.querySelector("#allSongsBtn");
 const likedSongsBtn = document.querySelector("#likedSongsBtn");
 
+////Liked songs
 likedSongsBtn.addEventListener("click", function () {
+  //1. clear the songLists DOM elements
   document.querySelector(".songList").innerHTML = "";
 
-  //create HTML elements in the songList div from all song objects in allSongs array that have the key liked value = true
-
-  //if song objects key liked value is true, run addNewSong function+
+  //2. create DOM elements in the songList div for all song objects in allSongs array that have the key liked value = true
   allSongs.forEach((song) => {
     if (song.liked) {
       addSongToDom(song);
@@ -281,9 +281,12 @@ likedSongsBtn.addEventListener("click", function () {
   });
 });
 
+////All songs
 //clear all songList Div elements, then create DOM elements for all allSongs objects in the songList div
 allSongsBtn.addEventListener("click", function () {
+  //1. clear the songLists DOM elements
   document.querySelector(".songList").innerHTML = "";
+  //2. add DOM elements for all songs in the array
   allSongs.forEach((song) => {
     addSongToDom(song);
   });
