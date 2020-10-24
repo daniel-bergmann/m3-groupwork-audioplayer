@@ -7,7 +7,8 @@ let allSongs = [];
 function addNewSong(songSrc) {
   // Define the emoji data
   let song = {
-    cover: "https://i.ibb.co/tM331H6/songlist-Pause.png",
+    cover:
+      "https://upload.wikimedia.org/wikipedia/en/a/a6/Schoolboy_Q_-_Crash_Talk.png",
     isPlaying: false,
     artist: "Daddy Yankee",
     title: "terremoto",
@@ -69,14 +70,14 @@ let addSongToDom = function (song) {
   newSongHeart.classList.add("heart");
   newSongHeart.src = song.liked
     ? "https://i.ibb.co/sWv1GY8/heart-Full.png"
-    : "https://i.ibb.co/N1ZtcqP/heart-Empty.png";
+    : "https://i.ibb.co/5xt3Wnh/heart.png";
   newSongIcons.appendChild(newSongHeart);
   newSongHeart.addEventListener("click", likeSong);
 
   ///TRASH BUTTON
   let newSongTrash = document.createElement("img");
   newSongTrash.classList.add("trash");
-  newSongTrash.src = "https://i.ibb.co/sJTxwk6/trash.png";
+  newSongTrash.src = "https://i.ibb.co/48cHjGg/Delete.png";
   newSongIcons.appendChild(newSongTrash);
   newSongTrash.addEventListener("click", removeSong);
 
