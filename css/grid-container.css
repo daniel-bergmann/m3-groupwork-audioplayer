@@ -48,8 +48,12 @@ body {
 .songPlay {
   font-family: "Roboto", sans-serif;
   grid-area: songPlay;
-  background: rgb(33,30,37);
-background: linear-gradient(180deg, rgba(33,30,37,1) 0%, rgba(0,0,0,1) 250%);
+  background: rgb(33, 30, 37);
+  background: linear-gradient(
+    180deg,
+    rgba(33, 30, 37, 1) 0%,
+    rgba(0, 0, 0, 1) 250%
+  );
   color: white;
 }
 
@@ -57,11 +61,13 @@ background: linear-gradient(180deg, rgba(33,30,37,1) 0%, rgba(0,0,0,1) 250%);
 .footer {
   font-family: "Roboto", sans-serif;
   grid-area: footer;
-  SS
-background: rgb(33,30,37);
-background: linear-gradient(180deg, rgba(33,30,37,1) 0%, rgba(0,0,0,1) 250%);
+  background: rgb(33, 30, 37);
+  background: linear-gradient(
+    180deg,
+    rgba(33, 30, 37, 1) 0%,
+    rgba(0, 0, 0, 1) 250%
+  );
   color: white;
-  
 }
 
 /*grid-propeties*/
