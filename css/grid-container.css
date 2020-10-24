@@ -20,18 +20,18 @@ body {
 .header {
   font-family: "Roboto", sans-serif;
   color: #d3cdce;
-  background-color: #211e25 ;
+  background-color: #211e25;
   grid-area: header;
 }
 .navbar {
   font-size: 20px;
   grid-area: navbar;
-  background-color: #211e25 ;
+  background-color: #211e25;
 }
 
 .main {
   grid-area: main;
-  background-color: #211e25 ;
+  background-color: #211e25;
   font-family: "Roboto", sans-serif;
   font-size: 30px;
   text-decoration: none;
@@ -41,14 +41,15 @@ body {
 .sidebar {
   font-family: "Roboto", sans-serif;
   grid-area: sidebar;
-  background-color: #211e25 ;
+  background-color: #211e25;
 }
 
 /*section-songPlay*/
 .songPlay {
   font-family: "Roboto", sans-serif;
   grid-area: songPlay;
-  background-color: #211e25 ;
+  background: rgb(33,30,37);
+background: linear-gradient(180deg, rgba(33,30,37,1) 0%, rgba(0,0,0,1) 250%);
   color: white;
 }
 
@@ -56,8 +57,11 @@ body {
 .footer {
   font-family: "Roboto", sans-serif;
   grid-area: footer;
-  background-color: #211e25;
+  SS
+background: rgb(33,30,37);
+background: linear-gradient(180deg, rgba(33,30,37,1) 0%, rgba(0,0,0,1) 250%);
   color: white;
+  
 }
 
 /*grid-propeties*/
@@ -82,7 +86,7 @@ body {
     -ms-grid-rows: 100px auto 50px 100px;
     grid-template-rows: 100px auto 50px 100px;
     /*Fila 1 tendra 100px, fila dos tendra 50px, fila 3 tomara tamaño automatico y fila 4 100px*/
-    grid-template: "header   header" 150px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 150px/auto 85%;
+    grid-template: "header   header" 150px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 150px / auto 85%;
   }
 }
 
