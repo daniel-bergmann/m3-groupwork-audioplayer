@@ -3,6 +3,7 @@
 const songList = document.querySelector(".songList");
 
 let allSongs = [];
+
 let songAudios = [];
 
 function addNewSong(songSrc) {
@@ -12,7 +13,7 @@ function addNewSong(songSrc) {
   newSongAudio.src = songSrc;
   songAudios.push(newSongAudio);
 
-  // Define the song data
+  // Define a song as on object with alot of key values
   let song = {
     cover: "https://i.ytimg.com/vi/oYadGMVZm0E/hqdefault.jpg",
     artist: "Daddy Yankee",
@@ -23,8 +24,8 @@ function addNewSong(songSrc) {
     isPlaying: false,
     currentSong: false,
   };
-  // Add it to the allSongs array
   allSongs.push(song);
+
   console.log("Song added to array");
   resetAllSongsDom();
 }
@@ -49,12 +50,8 @@ let addSongToDom = function (song) {
   newSongPlayBtn.classList.add("newSongPlayBtn");
   newSong.appendChild(newSongPlayBtn);
   newSongPlayBtn.addEventListener("click", playSong);
-  //if song is playing ,set its
   if (song.isPlaying) {
     newSongPlayBtn.src = "https://i.ibb.co/tM331H6/songlist-Pause.png";
-    playBtnImg.src = "img/pause.png";
-  } else {
-    playBtnImg.src = "img/play.png";
   }
 
   //song artist and title div
@@ -81,14 +78,14 @@ let addSongToDom = function (song) {
   newSongHeart.classList.add("heart");
   newSongHeart.src = song.liked
     ? "https://i.ibb.co/sWv1GY8/heart-Full.png"
-    : "https://i.ibb.co/5xt3Wnh/heart.png";
+    : "https://i.ibb.co/N1ZtcqP/heart-Empty.png";
   newSongIcons.appendChild(newSongHeart);
   newSongHeart.addEventListener("click", likeSong);
 
   ///TRASH BUTTON
   let newSongTrash = document.createElement("img");
   newSongTrash.classList.add("trash");
-  newSongTrash.src = "https://i.ibb.co/48cHjGg/Delete.png";
+  newSongTrash.src = "https://i.ibb.co/sJTxwk6/trash.png";
   newSongIcons.appendChild(newSongTrash);
   newSongTrash.addEventListener("click", removeSong);
 
@@ -97,10 +94,16 @@ let addSongToDom = function (song) {
   if (song.isPlaying) {
     song.audio.play();
   }
-  // //line div
-  let newSongLine = document.createElement("div");
-  newSongLine.classList.add("line");
-  newSong.parentNode.appendChild(newSongLine);
+
+  // //audio div
+  // let newSongAudio = document.createElement("audio");
+  // newSongAudio.classList.add("newAudio");
+  // newSongAudio.src = song.audio;
+  // songAudios.push(newSongAudio);
+  // newSong.appendChild(newSongAudio);
+  // if (song.isPlaying) {
+  //   newSongAudio.play();
+  // }
 
   console.log("Song added or changed in DOM");
 };
@@ -147,14 +150,7 @@ function playSong(e) {
     return song.isPlaying;
   });
 
-  //set all songs to not the current song, then set clickedSong to current song.
-  allSongs.forEach((song) => {
-    song.currentSong = false;
-  });
-  clickedSong.currentSong = true;
-
   //this conditional will handle only the song that is playing, but is not current song
-  /////it pauses the currently playing song and sets it to not playing and not current song
   if (currentlyPlayingSong && clickedSong !== currentlyPlayingSong) {
     currentlyPlayingSong.audio.pause();
     // MISSING: set songs duration to 00:00
@@ -170,7 +166,6 @@ function playSong(e) {
     clickedSong.isPlaying = true;
     clickedSong.audio.play();
   }
-
   console.log(currentlyPlayingSong);
 
   const songCover = document.querySelector("#currentCover");
@@ -184,7 +179,6 @@ function playSong(e) {
   resetAllSongsDom();
 }
 
-//SONG LIST ICONS
 // liked song function
 let likedSongs = [];
 function likeSong(e) {
@@ -217,54 +211,8 @@ function removeSong(e) {
   resetAllSongsDom();
 }
 
-//PLAYBAR
+// menu
 
-////Play button
-const playBtn = document.querySelector(".play");
-const playBtnImg = document.querySelector("#playBtnImg");
-playBtn.addEventListener("click", function () {
-  //1. change the image depending if a song is playing or not
-  allSongs.forEach((song) => {
-    if (song.isPlaying) {
-      playBtnImg.src = "img/play.png";
-    } else {
-      playBtnImg.src = "img/pause.png";
-    }
-  });
-  //2. check if the current song is playing and pause if it is, else play.
-  allSongs.forEach((song) => {
-    if (song.currentSong) {
-      if (song.isPlaying) {
-        song.isPlaying = false;
-        song.audio.pause();
-      } else {
-        song.isPlaying = true;
-        song.audio.play();
-      }
-    }
-    //3. everytime we make any change we have to reset dom to match the true state of array
-    resetAllSongsDom();
-  });
-});
-
-////Forward button
-const forwardBtn = document.querySelector(".forward");
-forwardBtn.addEventListener("click", function () {
-  allSongs.forEach((song) => {
-    if (song.isPlaying) {
-      song.isPlaying = false;
-      let currentSongIndex = song.songId;
-      let nextSongId = currentSongIndex + 1;
-      allSongs[nextSongId].isPlaying = true;
-    }
-    resetAllSongsDom();
-  });
-});
-
-////Back Button
-//definition: on click, set current songs duration to 0 and play again. if current song duration = 0, play the song with the index -1
-
-// MENU
 const allSongsBtn = document.querySelector("#allSongsBtn");
 const likedSongsBtn = document.querySelector("#likedSongsBtn");
 
@@ -288,3 +236,61 @@ allSongsBtn.addEventListener("click", function () {
     addSongToDom(song);
   });
 });
+
+//PLAYBAR
+
+const playBtn = document.querySelector(".play");
+playBtn.addEventListener("click", function () {
+  allSongs.forEach((song) => {
+    //look for the current song selected
+    if (song.currentSong) {
+      //if current song isPlaying, set it to !isPlaying
+      if (song.isPlaying) {
+        song.isPlaying = false; //this needs a pause function
+      } else {
+        song.isPlaying = true;
+      }
+    }
+    console.log(song.isPlaying);
+    resetAllSongsDom();
+  });
+});
+
+//FORWARD BUTTON
+
+// const forwardBtn = document.querySelector(".forward");
+// forwardBtn.addEventListener("click", function () {
+//   for (song of allSongs) {
+//     //check for current song, and make it not the current song, and make it not playing.
+//     //then set the next song to the current song and make it play
+//     if (song.currentSong) {
+//       song.isPlaying = false;
+//       song.currentSong = false;
+//       let currentSongIndex = song.songId;
+//       let nextSongId = currentSongIndex + 1;
+
+//       //these do not work
+//       console.log(allSongs, nextSongId);
+//       allSongs[nextSongId].currentSong = true;
+//       allSongs[nextSongId].isPlaying = true;
+//       console.log("Skipped to next song and set that song to currentSong ");
+//       resetAllSongsDom();
+//       break;
+//     }
+//     //resetAllSongsDom();
+//   }
+// });
+
+//BACK BUTTON
+// const backBtn = document.querySelector('.forward')
+// forwardBtn.addEventListener('click', function(){
+//   allSongs.forEach(song =>{
+//     if (song.isPlaying) {
+//       song.isPlaying = false;
+//       let currentSongIndex = song.songId;
+//       let nextSongId = currentSongIndex - 1;
+//       allSongs[nextSongId].isPlaying = true;
+//     }
+//     resetAllSongsDom();
+//   });
+// });
