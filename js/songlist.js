@@ -262,19 +262,41 @@ forwardBtn.addEventListener("click", function () {
   const currentlyPlayingSong = allSongs.find(function (song) {
     return song.isPlaying;
   });
+  console.log(currentlyPlayingSong);
   let nextSongId = currentlyPlayingSong.songId + 1;
   console.log(nextSongId);
+  // console.log(nextSongId);
 
-  currentlyPlayingSong.currentSong = false;
-  currentlyPlayingSong.isPlaying = false;
   allSongs[nextSongId].currentSong = true;
   allSongs[nextSongId].isPlaying = true;
-
+  currentlyPlayingSong.currentSong = false;
+  currentlyPlayingSong.audio.pause();
+  currentlyPlayingSong.audio.currentTime = 0;
+  currentlyPlayingSong.isPlaying = false;
   resetAllSongsDom();
 });
 
 ////Back Button
 //definition: on click, set current songs duration to 0 and play again. if current song duration = 0, play the song with the index -1
+////Forward button
+const backBtn = document.querySelector(".back");
+backBtn.addEventListener("click", function () {
+  const currentlyPlayingSong = allSongs.find(function (song) {
+    return song.isPlaying;
+  });
+  console.log(currentlyPlayingSong);
+  let lastSongId = currentlyPlayingSong.songId - 1;
+  console.log(lastSongId);
+  // console.log(nextSongId);
+
+  allSongs[lastSongId].currentSong = true;
+  allSongs[lastSongId].isPlaying = true;
+  currentlyPlayingSong.currentSong = false;
+  currentlyPlayingSong.audio.pause();
+  currentlyPlayingSong.audio.currentTime = 0;
+  currentlyPlayingSong.isPlaying = false;
+  resetAllSongsDom();
+});
 
 // MENU
 const allSongsBtn = document.querySelector("#allSongsBtn");
