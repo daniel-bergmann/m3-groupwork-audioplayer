@@ -10,6 +10,7 @@
 
 html {
   height: 100%;
+  width: auto;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
   min-height: 100%;
   background-color: #211e25;
   padding: 2px;
+  width: 100vw;
 }
 
 .header {
@@ -44,6 +46,8 @@ body {
   font-size: 30px;
   text-decoration: none;
   overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   max-height: 60vh;
   max-width: 80vw;
 }
@@ -59,12 +63,7 @@ body {
 .songPlay {
   font-family: "Roboto", sans-serif;
   grid-area: songPlay;
-  background: rgb(33, 30, 37);
-  background: linear-gradient(
-    180deg,
-    rgba(33, 30, 37, 1) 0%,
-    rgba(0, 0, 0, 2) 40%
-  );
+  background: linear-gradient(180deg, #27242d 0%, rgba(0, 0, 0, 2) 150%);
   color: white;
 }
 
@@ -72,12 +71,7 @@ body {
 .footer {
   font-family: "Roboto", sans-serif;
   grid-area: footer;
-  background: rgb(33, 30, 37);
-  background: linear-gradient(
-    180deg,
-    rgba(33, 30, 37, 1) 0%,
-    rgba(0, 0, 0, 2) 40%
-  );
+  background: linear-gradient(180deg, #27242d 0%, rgba(0, 0, 0, 2) 150%);
   color: white;
 }
 
@@ -102,10 +96,10 @@ body {
 
 @media (min-width: 900px) {
   .grid-container {
-    -ms-grid-rows: 100px auto 50px 100px;
-    grid-template-rows: 100px auto 50px 100px;
+    -ms-grid-rows: 1px auto 50px 100px;
+    grid-template-rows: 150px auto 50px 130px;
     /*Fila 1 tendra 100px, fila dos tendra 50px, fila 3 tomara tamaño automatico y fila 4 100px*/
-    grid-template: "header   header" 150px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 150px / auto 85%;
+    grid-template: "header   header" 150px "navbar   main" 50%/5% "sidebar  sidebar" "songPlay  footer" auto 75%;
   }
 }
 
