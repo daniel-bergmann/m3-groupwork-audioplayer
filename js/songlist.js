@@ -51,9 +51,6 @@ let addSongToDom = function (song) {
   //3.1 Check if song is playing, and show play or pause accordingly
   if (song.isPlaying) {
     newSongPlayBtn.src = "https://i.ibb.co/tM331H6/songlist-Pause.png";
-    playBtnImg.src = "img/pause.png";
-  } else {
-    playBtnImg.src = "img/play.png";
   }
 
   //4. Song info div element created and added to the div
@@ -158,6 +155,7 @@ function playSong(e) {
   clickedSong.currentSong = true;
 
   //2. find song that is playing but is not current song, pause it, and set it to not the current song nor the one that isPlaying
+  ////
   if (currentlyPlayingSong && clickedSong !== currentlyPlayingSong) {
     currentlyPlayingSong.audio.pause();
     // MISSING: set songs duration to 00:00
@@ -182,7 +180,11 @@ function playSong(e) {
 
   const songTitle = document.querySelector("#title");
   songTitle.innerHTML = clickedSong.title;
+
   //5. reset the dom to match the true state of the array
+
+  updatePlaybarPlayBtnImg();
+
   resetAllSongsDom();
 }
 
@@ -222,15 +224,22 @@ function removeSong(e) {
 ////Play button
 const playBtn = document.querySelector(".play");
 const playBtnImg = document.querySelector("#playBtnImg");
+
+let updatePlaybarPlayBtnImg = function () {
+  for (song of allSongs) {
+    if (song.isPlaying) {
+      playBtnImg.src = "img/pause.png";
+      break;
+    } else {
+      playBtnImg.src = "img/play.png";
+    }
+  }
+};
+
 playBtn.addEventListener("click", function () {
   //1. change the image depending if a song is playing or not
-  allSongs.forEach((song) => {
-    if (song.isPlaying) {
-      playBtnImg.src = "img/play.png";
-    } else {
-      playBtnImg.src = "img/pause.png";
-    }
-  });
+  updatePlaybarPlayBtnImg();
+
   //2. check if the current song is playing and pause if it is, else play.
   allSongs.forEach((song) => {
     if (song.currentSong) {
@@ -250,15 +259,18 @@ playBtn.addEventListener("click", function () {
 ////Forward button
 const forwardBtn = document.querySelector(".forward");
 forwardBtn.addEventListener("click", function () {
-  allSongs.forEach((song) => {
-    if (song.isPlaying) {
-      song.isPlaying = false;
-      let currentSongIndex = song.songId;
-      let nextSongId = currentSongIndex + 1;
-      allSongs[nextSongId].isPlaying = true;
-    }
-    resetAllSongsDom();
+  const currentlyPlayingSong = allSongs.find(function (song) {
+    return song.isPlaying;
   });
+  let nextSongId = currentlyPlayingSong.songId + 1;
+  console.log(nextSongId);
+
+  currentlyPlayingSong.currentSong = false;
+  currentlyPlayingSong.isPlaying = false;
+  allSongs[nextSongId].currentSong = true;
+  allSongs[nextSongId].isPlaying = true;
+
+  resetAllSongsDom();
 });
 
 ////Back Button
