@@ -1,8 +1,15 @@
 /* footer_content/styles(playBar) */
+.nowPlaying {
+  display: flex;
+  min-width: 300px;
+  text-align: left;
+  margin: 45px 0 0 0;
+  
+}
 
 .nowPlayingImg {
-  margin-top: 10px;
-  height: 45px;
+  height: 60px;
+  margin: 0px 15px 0 45px;
 }
 
 /* PLAY BAR */
@@ -18,7 +25,7 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  margin-left: 0.5rem;
+  margin-top: 45px;
 }
 
 #playbarBtns:hover {
@@ -31,9 +38,9 @@
   justify-content: center;
   grid-area: progressBar;
   font-size: 10px;
-  display: flex;
   align-items: center;
   width: 80%;
+  display: flex;
 }
 .progressBarEmpty {
   border-radius: 0 10em 10em 0;
