@@ -83,7 +83,8 @@
   margin-right: 35rem;
 }
 .icons {
-  margin-right: 3rem;
+  margin-right: 5rem;
+  min-width: 5rem;
 }
 .icons img {
   margin-right: 1rem;
@@ -135,10 +136,6 @@ button {
   color: rgba(255, 249, 249, 0.5);
   margin-top: 1rem;
 }
-
-
-
-
 
 /* Media queries */
 
