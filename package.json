@@ -1,0 +1,28 @@
+{
+  "name": "m3-groupwork-audioplayer",
+  "version": "1.0.0",
+  "description": "A hands on group-work project in the Reykjavik school of web development.",
+  "main": "songlist.js",
+  "babel": {
+    "presets" : ["es2015"]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "scripts": {
+    "start" : "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-bergmann/m3-groupwork-audioplayer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel-bergmann/m3-groupwork-audioplayer/issues"
+  },
+  "homepage": "https://github.com/daniel-bergmann/m3-groupwork-audioplayer#readme"
+}
