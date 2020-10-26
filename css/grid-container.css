@@ -81,6 +81,10 @@ body {
   /* ancho columna 1 de 70%px y ancho columna 2 automatico*/
 }
 
+
+
+/* Media queries */
+
 @media (min-width: 600px) {
   .grid-container {
     grid-template: "header   header" 100px "navbar   main" auto "sidebar  sidebar" 50px "songPlay  footer" 100px/200px auto;
