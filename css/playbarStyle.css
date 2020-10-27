@@ -14,7 +14,7 @@
 /* PLAY BAR */
 .playBar {
   grid-area: playBar;
-  margin-right: 23rem;
+  margin-right: 21.5rem;
 }
 
 #playbarBtns {

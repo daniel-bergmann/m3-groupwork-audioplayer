@@ -8,6 +8,9 @@
   padding: 0;
 }
 
+.all {
+  display: none;
+}
 html {
   height: 100%;
   width: auto;
@@ -26,8 +29,6 @@ body {
   color: #d3cdce;
   background-color: #211e25;
   grid-area: header;
-  justify-content: center;
-  align-items: center;
 }
 
 .header img {
@@ -99,7 +100,7 @@ body {
     -ms-grid-rows: 1px auto 50px 100px;
     grid-template-rows: 150px auto 50px 130px;
     /*Fila 1 tendra 100px, fila dos tendra 50px, fila 3 tomara tamaño automatico y fila 4 100px*/
-    grid-template: "header   header" 150px "navbar   main" 50%/5% "sidebar  sidebar" "songPlay  footer" auto 75%;
+    grid-template: "header   header" 150px "navbar   main" 100%/5% "sidebar  sidebar" "songPlay  footer" auto 75%;
   }
 }
 

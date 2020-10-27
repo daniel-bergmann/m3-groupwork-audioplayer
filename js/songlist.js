@@ -44,13 +44,13 @@ let addSongToDom = function (song) {
 
   //3. Play button added to the div
   let newSongPlayBtn = document.createElement("img");
-  newSongPlayBtn.src = "https://i.ibb.co/j59Mq8R/songlist-Play.png";
+  newSongPlayBtn.src = "img/songlistPlay.svg";
   newSongPlayBtn.classList.add("newSongPlayBtn");
   newSong.appendChild(newSongPlayBtn);
   newSongPlayBtn.addEventListener("click", playSong);
   //3.1 Check if song is playing, and show play or pause accordingly
   if (song.isPlaying) {
-    newSongPlayBtn.src = "https://i.ibb.co/tM331H6/songlist-Pause.png";
+    newSongPlayBtn.src = "img/songlistPause.svg";
   }
 
   //4. Song info div element created and added to the div
@@ -77,9 +77,7 @@ let addSongToDom = function (song) {
   let newSongHeart = document.createElement("img");
   newSongHeart.classList.add("heart");
   //5.1.2 Show red heart if liked = true, else show empty heart
-  newSongHeart.src = song.liked
-    ? "https://i.ibb.co/sWv1GY8/heart-Full.png"
-    : "https://i.ibb.co/5xt3Wnh/heart.png";
+  newSongHeart.src = song.liked ? "img/Heart_full.svg" : "img/Heart.svg";
   newSongIcons.appendChild(newSongHeart);
   //5.1.3 Run likeSong function on click
   newSongHeart.addEventListener("click", likeSong);
@@ -87,7 +85,7 @@ let addSongToDom = function (song) {
   //5.2.1 Trash button created and added to new song div
   let newSongTrash = document.createElement("img");
   newSongTrash.classList.add("trash");
-  newSongTrash.src = "https://i.ibb.co/48cHjGg/Delete.png";
+  newSongTrash.src = "img/trash.svg";
   newSongIcons.appendChild(newSongTrash);
   //5.2.2 Run removeSong function on click
   newSongTrash.addEventListener("click", removeSong);
@@ -147,7 +145,6 @@ function playSong(e) {
   const currentlyPlayingSong = allSongs.find(function (song) {
     return song.isPlaying;
   });
-
   //1. set all songs to not the current song, then set clickedSong to current song.
   allSongs.forEach((song) => {
     song.currentSong = false;
@@ -181,10 +178,9 @@ function playSong(e) {
   const songTitle = document.querySelector("#title");
   songTitle.innerHTML = clickedSong.title;
 
-  //5. reset the dom to match the true state of the array
-
+  //6. change the playbar play button image
   updatePlaybarPlayBtnImg();
-
+  //5. reset the dom to match the true state of the array
   resetAllSongsDom();
 }
 
@@ -212,7 +208,7 @@ function removeSong(e) {
     `Are you sure you want to delete ${allSongs[songId].title}?`
   );
   if (remove) {
-    allSongs.splice(songId);
+    allSongs.splice(songId, 1);
   }
   console.log("Song removed.");
   //3. reset the dom to match the true state of the array
@@ -228,10 +224,10 @@ const playBtnImg = document.querySelector("#playBtnImg");
 let updatePlaybarPlayBtnImg = function () {
   for (song of allSongs) {
     if (song.isPlaying) {
-      playBtnImg.src = "img/pause.png";
+      playBtnImg.src = "img/pause.svg";
       break;
     } else {
-      playBtnImg.src = "img/play.png";
+      playBtnImg.src = "img/play.svg";
     }
   }
 };
@@ -323,3 +319,7 @@ allSongsBtn.addEventListener("click", function () {
     addSongToDom(song);
   });
 });
+
+////Set clicked song to active:
+
+//set playing songs background

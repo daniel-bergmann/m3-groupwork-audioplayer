@@ -45,13 +45,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(0, 0, 0, 0) 50%,
-    rgba(0, 0, 0, 0.15) 84%
-  );
+
   position: relative;
   left: 0%;
   width: 100%;
@@ -61,7 +55,23 @@
 
 .newSong:hover {
   opacity: 1;
-  transform: scale(1.005);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.15) 84%
+  );
+}
+
+.newSongActive {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.15) 84%
+  );
 }
 
 .newSongCover {
@@ -89,6 +99,20 @@
 }
 .icons img {
   margin-right: 1rem;
+}
+
+.heart {
+  opacity: 0.8;
+}
+.heart:hover {
+  opacity: 1;
+}
+
+.trash {
+  opacity: 0.8;
+}
+.trash:hover {
+  opacity: 1;
 }
 
 .line {
