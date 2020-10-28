@@ -35,7 +35,7 @@ A hands on group project in the Reykjavik school of web development.
 The goal of this project is to make an interactive audio player with multible functionalities including a play button, add and store a song, delete songs, have multible playlists and the option to add a song to favourites. Then automatically create another representation of the DOM to store it. 
 
 Link to the player:
-https://tinyurl.com/y6fr3np5i
+https://daniel-bergmann.github.io/m3-groupwork-audioplayer/
 
 It is made only with vanilla JS, CSS and HTML. No frameworks or librarie were used. Another goal of this project was to gain a deeper understanding of the fundamental technology needed for web development
 
