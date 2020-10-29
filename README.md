@@ -37,6 +37,10 @@ The goal of this project is to make an interactive audio player with multible fu
 Link to the player:
 https://daniel-bergmann.github.io/m3-groupwork-audioplayer/
 
+
+Link to Figma:
+https://www.figma.com/file/jxgMT6B3ifpTQFsfXmOxVu/Alexander-finished?node-id=29:373
+
 It is made only with vanilla JS, CSS and HTML. No frameworks or librarie were used. Another goal of this project was to gain a deeper understanding of the fundamental technology needed for web development
 
 This was a group project so as a team we utilized Git for version control and worked together through mob coding. 
